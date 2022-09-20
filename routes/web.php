@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/first', function () {
+    return view('first');
+});
+
+Route::get('second', [App\Http\Controllers\SimpleController::class, 'view']);
+Route::get('third', [App\Http\Controllers\SimpleController::class, 'viewVariable']);
+Route::get('fourth', [App\Http\Controllers\SimpleController::class, 'viewData']);
+Route::get('fifth/{parameter}', [App\Http\Controllers\SimpleController::class, 'viewParameter'])->name('fifth');
+
+Route::post('send', [App\Http\Controllers\SimpleController::class, 'sendData']);
