@@ -21,6 +21,18 @@ Route::get('/first', function () {
     return view('first');
 });
 
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
 Route::get('second', [App\Http\Controllers\SimpleController::class, 'view']);
 Route::get('third', [App\Http\Controllers\SimpleController::class, 'viewVariable']);
 Route::get('fourth', [App\Http\Controllers\SimpleController::class, 'viewData']);
