@@ -1,4 +1,4 @@
-<h1> Parameter value: {{$parameter}}</h1>
+<h1> Parameter value: {{$parameter ?? 0}}</h1>
 <h1> Result: {{$result}}</h1>
 
 {!! Form::open(['url' => 'send']) !!}
