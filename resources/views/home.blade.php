@@ -1,7 +1,7 @@
-@extends('_layouts.app')
+@extends('_layouts.app-coreui')
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
 
   HOME page
 
