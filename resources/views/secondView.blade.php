@@ -1,0 +1,1 @@
+<h1> returned from the controller {{$var ?? '000'}}</h1>
