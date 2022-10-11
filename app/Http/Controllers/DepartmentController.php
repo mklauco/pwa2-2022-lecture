@@ -12,7 +12,10 @@ class DepartmentController extends Controller
     
     public function index(){
         $departments = Department::all();
-        return view('departments.index')->with('departments', $departments);
+        $departmentsInfo['count'] = $departments->count();
+        $departmentsInfo['number_employees'] = $departments->sum('number_employees');
+        $departmentsInfo['average'] = $departments->average('number_employees');
+        return view('departments.index')->with('departments', $departments)->with('departmentsInfo', $departmentsInfo);
         
     }
 }

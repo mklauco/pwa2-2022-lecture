@@ -1,7 +1,7 @@
-<div class="card text-white bg-gradient-{{$gradient ?? 'primary'}}">
+<div class="card text-white bg-{{$gradient ?? 'primary'}} mb-1">
   <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
     <div>
-      <div class="text-value-lg">{{$counter ?? 0}}</div>
+      <div class="fs-4 fw-semibold">{{$counter ?? 0}}</div>
       <div>{{$title}}</div>
     </div>
     

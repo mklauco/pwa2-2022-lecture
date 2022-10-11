@@ -14,5 +14,5 @@
 1. `php artisan serve`
 
 ## Notes
-1. Implemented template: CoreUI free [https://coreui.io/demos/bootstrap/4.2/free/]
+1. Implemented template: CoreUI free (https://coreui.io/demos/bootstrap/4.2/free/)
 1. Implemented form templating in `resources/view/_t`
