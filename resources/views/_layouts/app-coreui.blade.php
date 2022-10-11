@@ -34,11 +34,12 @@
     
     
     <div class="body flex-grow-1 px-3">
-      
-      @include('_layouts.errors')
-      
-      @yield('content')
-
+      {{-- <div class="container"> --}}
+        {{-- @include('_layouts.errors') --}}
+        
+        @yield('content')
+        
+      {{-- </div> --}}
     </div>
     
     

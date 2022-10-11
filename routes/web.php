@@ -29,11 +29,15 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
 
+// Auth::routes();
+Route::middleware(['auth'])->group(function () {
 
+    Route::get('/about', function () {
+        return view('about');
+    })->name('about');
+
+});
 
 Route::get('second', [App\Http\Controllers\SimpleController::class, 'view']);
 Route::get('third', [App\Http\Controllers\SimpleController::class, 'viewVariable']);
@@ -47,9 +51,12 @@ Route::post('send', [App\Http\Controllers\SimpleController::class, 'sendData']);
 Route::resource('departments', App\Http\Controllers\DepartmentController::class);
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();
 // Auth::routes();
+
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -19,13 +19,13 @@
 
     <ul class="header-nav me-4">
       
-      {{-- <a class="btn btn-outline-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">   --}}
-        {{-- <i class="icon me-2 cil-account-logout"></i>      --}}
-        {{-- {{ __('Logout') }} --}}
-      {{-- </a> --}}
-      {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+      <a class="btn btn-outline-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  
+        <i class="icon me-2 cil-account-logout"></i>     
+        {{ __('Logout') }}
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
-      </form> --}}
+      </form>
       
     </ul>
 
