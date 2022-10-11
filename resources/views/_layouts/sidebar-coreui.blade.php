@@ -9,7 +9,7 @@
     {{-- @include('_t.sdb-main', ['title' => 'User Profile', 'icon' => 'user', 'link' => '#']) --}}
     
     <li class="nav-item">
-      <a class="nav-link" href="{{route('departments')}}">
+      <a class="nav-link" href="{{route('departments.index')}}">
         <i class="nav-icon cil-{{$icon ?? 'speedometer'}}"></i>
         Departments
       </a>

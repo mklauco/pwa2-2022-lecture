@@ -18,7 +18,7 @@ class DepartmentFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'abbreviation' => fake()->bs(),
+            'abbreviation' => fake()->stateAbbr(),
             'number_employees' => fake()->numberBetween(1, 50),
         ];
 

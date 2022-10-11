@@ -42,7 +42,14 @@ Route::get('fifth/{parameter}', [App\Http\Controllers\SimpleController::class, '
 
 Route::post('send', [App\Http\Controllers\SimpleController::class, 'sendData']);
 
-Route::get('departments', [App\Http\Controllers\DepartmentController::class, 'index'])->name('departments');
-Auth::routes();
+// Route::get('departments', [App\Http\Controllers\DepartmentController::class, 'index'])->name('departments');
+
+Route::resource('departments', App\Http\Controllers\DepartmentController::class);
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
