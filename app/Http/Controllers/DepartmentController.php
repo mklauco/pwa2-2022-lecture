@@ -53,10 +53,12 @@ class DepartmentController extends Controller
             'abbreviation'        => $request['abbreviation'],
             'number_employees'    => $request['number_employees'],
         ]);
+        // $d = NEW Department;
         // $d->name                = $request->name;
         // $d->abbreviation        = $request->abbreviation;
         // $d->number_employees    = $request->number_employees;
         // $d->save();
+        // $d->last_id();
         return redirect()->route('departments.index');
     }
     

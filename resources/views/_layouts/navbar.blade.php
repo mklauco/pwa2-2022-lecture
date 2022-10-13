@@ -1,14 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-      <a class="navbar-brand" href="#!">Start Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item"><a class="nav-link" href="{{route('home')}}">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{route('about')}}">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-          </ul>
-      </div>
-  </div>
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+
+
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+
+
+        
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+        
+        <a class="btn btn-outline-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  
+            <i class="icon me-2 cil-account-logout"></i>     
+            {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
+        
+
+    </ul>
+
 </nav>
