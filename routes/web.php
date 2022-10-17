@@ -14,49 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // do not delete this route, only if you replace the welcome with login page
+    // return view('welcome');
+    return view('auth.login'); 
 });
 
-Route::get('/first', function () {
-    return view('first');
-});
 
-Route::get('/index', function () {
-    return view('index');
-});
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
-
-
-// Auth::routes();
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/about', function () {
-        return view('about');
-    })->name('about');
+    Route::resource('departments', App\Http\Controllers\DepartmentController::class);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 });
 
-Route::get('second', [App\Http\Controllers\SimpleController::class, 'view']);
-Route::get('third', [App\Http\Controllers\SimpleController::class, 'viewVariable']);
-Route::get('fourth', [App\Http\Controllers\SimpleController::class, 'viewData']);
-Route::get('fifth/{parameter}', [App\Http\Controllers\SimpleController::class, 'viewParameter'])->name('fifth');
-
-Route::post('send', [App\Http\Controllers\SimpleController::class, 'sendData']);
-
-// Route::get('departments', [App\Http\Controllers\DepartmentController::class, 'index'])->name('departments');
-
-Route::resource('departments', App\Http\Controllers\DepartmentController::class);
-
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-// Auth::routes();
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes(); // do not delete, otherwise you will disable the login/logout routes
