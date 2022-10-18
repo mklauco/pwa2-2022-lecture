@@ -16,11 +16,13 @@ class DepartmentFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'name' => fake()->company(),
-            'abbreviation' => fake()->stateAbbr(),
-            'number_employees' => fake()->numberBetween(1, 50),
-        ];
+// DepartmentFactory
+return [
+    'name'                => fake()->company(),
+    'abbreviation'        => fake()->stateAbbr(),
+    'number_employees'    => fake()->numberBetween(1, 50),
+    'director_id'        => fake()->numberBetween(1, 11),
+];
 
     }
 }

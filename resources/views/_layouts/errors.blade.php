@@ -1,13 +1,14 @@
 <div class="row justify-content-center">
   <div class="col-12">
-    @if (Session::has('success'))
-    <div class="alert alert-success" role="alert">{!! Session::get('success') !!}</div>
+    @if (session()->has('success'))
+    <div class="alert alert-success" role="alert">{!! session()->get('success') !!}</div>
     @endif
     
-    @if (Session::has('failure'))
-    <div class="alert alert-danger" role="alert">{!! Session::get('failure') !!}</div>
+    @if (session()->has('failure'))
+    <div class="alert alert-danger" role="alert">{!! session()->get('failure') !!}</div>
     @endif
     
+    {{-- should be in "_layouts/errors.blade.php" included in "app.blade.php" --}}
     @if ($errors->any())
     <div class="alert alert-danger rounded-0">
       <ul>

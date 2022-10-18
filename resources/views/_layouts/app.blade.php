@@ -35,6 +35,8 @@
       <div id="content">
         @include('_layouts.navbar')
         
+        {{-- just before @yield('content') --}}
+        @include('_layouts.errors')
         @yield('content')
       </div>
 

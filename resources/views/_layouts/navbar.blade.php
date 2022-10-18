@@ -12,7 +12,8 @@
     
     
     
-    {{Auth::user()->name}}
+    {{-- <li>{{Auth::user()->name}}</li> --}}
+    {{Auth::user()->first_name}}&nbsp;{{Auth::user()->last_name}}
     <div class="topbar-divider d-none d-sm-block"></div>
     <a class="btn btn-outline-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  
       <i class="icon me-2 cil-account-logout"></i>     

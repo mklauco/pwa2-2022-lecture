@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Department;
 
+use Exception;
+
 class DepartmentController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class DepartmentController extends Controller
     */
     public function index()
     {
-        $dep = Department::orderBy('name', 'asc')->get();
+        $dep = Department::with('director')->orderBy('name', 'asc')->get();
         $depInfo['count'] = $dep->count();
         $depInfo['number_employees'] = $dep->sum('number_employees');
         $depInfo['average'] = $dep->average('number_employees');
@@ -44,22 +46,23 @@ class DepartmentController extends Controller
         $rules = [
             'name'                => 'required|string',
             'abbreviation'        => 'required|string|min:2',
-            'number_employees'    => 'required|numeric',
+            'number_employees'    => 'required|numeric|gt:0',
         ];
         $validated = $request->validate($rules);
+        // in DepartmentController.php method store()
         
-        $d = Department::create([
-            'name'                => $request['name'],
-            'abbreviation'        => $request['abbreviation'],
-            'number_employees'    => $request['number_employees'],
-        ]);
-        // $d = NEW Department;
-        // $d->name                = $request->name;
-        // $d->abbreviation        = $request->abbreviation;
-        // $d->number_employees    = $request->number_employees;
-        // $d->save();
-        // $d->last_id();
-        return redirect()->route('departments.index');
+        try {
+            $d = Department::create([
+                'name'                => $request['name'],
+                'abbreviation'        => $request['abbreviation'],
+                'number_employees'    => $request['number_employees'],
+            ]);
+            session()->flash('success', 'Department created');
+            return redirect()->route('departments.index');
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
     
     /**
@@ -97,7 +100,7 @@ class DepartmentController extends Controller
         $rules = [
             'name'                => 'required|string',
             'abbreviation'        => 'required|string|min:2',
-            'number_employees'    => 'required|numeric',
+            'number_employees'    => 'required|numeric|gt:0',
         ];
         $validated = $request->validate($rules);
         
@@ -106,7 +109,15 @@ class DepartmentController extends Controller
         $d->abbreviation        = $request->abbreviation;
         $d->number_employees    = $request->number_employees;
         $d->save();
-        return redirect()->route('departments.index');
+        
+        try {
+            $d->save();
+            session()->flash('success', 'Department updated');
+            return redirect()->route('departments.index');
+        } catch (Exception $e) {
+            session()->flash('failure', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
     
     /**
