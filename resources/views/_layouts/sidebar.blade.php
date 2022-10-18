@@ -12,10 +12,17 @@
   <hr class="sidebar-divider my-0">
   
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item {{ Request::is('departments*') ? 'active' : '' }}">
+  <li class="nav-item {{ request()->is('departments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{route('departments.index')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Departments</span>
+    </a>
+  </li>
+
+  <li class="nav-item {{ request()->is('users*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{route('users.index')}}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Users</span>
     </a>
   </li>
   

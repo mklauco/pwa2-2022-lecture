@@ -50,5 +50,10 @@ class User extends Authenticatable
     public function setLastNameAttribute($value){
         return $this->attributes['last_name'] = strtolower($value);
     }
+
+// App\Models\User
+public function departments() {
+    return $this->hasMany(Department::class, 'director_id', 'id');
+}
     
 }
