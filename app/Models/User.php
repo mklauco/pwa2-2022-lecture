@@ -47,9 +47,9 @@ class User extends Authenticatable
         return $this->first_name.' '.$this->last_name;
     }
     
-    public function setLastNameAttribute($value){
-        return $this->attributes['last_name'] = strtolower($value);
-    }
+    // public function setLastNameAttribute($value){
+        // return $this->attributes['last_name'] = strtolower($value);
+    // }
 
 // App\Models\User
 public function departments() {

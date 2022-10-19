@@ -22,7 +22,7 @@
           <td>
             <strong>{{$u->departments->count()}}</strong>:
             @foreach ( $u->departments as $d)
-              {{$d->abbreviation}}@if (!$loop->last),@endif
+            {{$d->abbreviation}}@if (!$loop->last),@endif
             @endforeach
           </td>
         </tr>
