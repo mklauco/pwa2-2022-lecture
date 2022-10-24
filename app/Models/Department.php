@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+// in model preamble
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Department extends Model
 {
     use HasFactory;
+// in Model class
+use SoftDeletes;
     
     protected $fillable = [ 'name', 'abbreviation', 'number_employees'];
     // App\Models\Department

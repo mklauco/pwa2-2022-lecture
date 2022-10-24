@@ -21,8 +21,10 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth'])->group(function () {
-
+// web.php
     Route::resource('departments', App\Http\Controllers\DepartmentController::class);
+    Route::delete('departments/force/{id}', [App\Http\Controllers\DepartmentController::class, 'forceDestroy'])->name('departments.forceDestroy');
+Route::post('departments/restore/{id}', [App\Http\Controllers\DepartmentController::class, 'restore'])->name('departments.restore');
 
     Route::resource('users', App\Http\Controllers\UserController::class);
 

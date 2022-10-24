@@ -1,7 +1,7 @@
 @extends('_layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center">
     
     
@@ -14,24 +14,39 @@
           <th>Name</th>
           <th>Abbreviation</th>
           <th>Number of Employees</th>
+          <th>Director</th>
+          <th>Created at</th>
+          <th>Updated at</th>
+          <th>Deleted at</th>
           <th></th>
         </thead>
         @foreach ($departments as $d)
-        <tr>
+        <tr @if($d->trashed())class="text-danger"@endif>
           <td>{{$d->name}}</td>
           <td>{{$d->abbreviation}}</td>
           <td>{{$d->number_employees}}</td>
-          {{-- departments.index --}}
           <td>{{$d->director->full_name}}</td>
+          <td>{{$d->created_at}}</td>
+          <td>{{$d->updated_at}}</td>
+          <td>{{$d->deleted_at}}</td>
           <td>
             <a class="link" href="{{route('departments.edit', $d->id)}}">
               Edit
             </a>
           </td>
           <td>
-            {!! Form::open(array('route' => ['departments.destroy', $d->id], 'method'=>'DELETE')) !!}
-            {!! Form::submit('delete', array('class' => 'btn btn-danger my-0 py-0', 'onclick' => 'return confirm("You are about to delete the department.")' ))!!}
-            {!! Form::close() !!}
+            @if(!$d->trashed())
+            {{ Form::open(array('route' => ['departments.destroy', $d->id], 'method'=>'DELETE')) }}
+            {{ Form::submit('delete', array('class' => 'btn btn-danger my-0 py-0', 'onclick' => 'return confirm("You are about to delete the department.")' ))}}
+            {{ Form::close() }}
+            @else
+            {{ Form::open(array('route' => ['departments.forceDestroy', $d->id], 'method'=>'DELETE')) }}
+            {{ Form::submit('Permanent delete', array('class' => 'btn btn-danger my-0 py-0', 'onclick' => 'return confirm("You are about to PERMANENTLY delete the department.")' ))}}
+            {{ Form::close() }}
+            {{ Form::open(array('route' => ['departments.restore', $d->id], 'method'=>'POST')) }}
+            {{ Form::submit('Restore', array('class' => 'btn btn-success my-0 py-0'))}}
+            {{ Form::close() }}
+            @endif
           </td>
         </tr>
         @endforeach
