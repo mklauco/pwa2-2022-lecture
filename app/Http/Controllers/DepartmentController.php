@@ -139,7 +139,7 @@ class DepartmentController extends Controller
       return redirect()->back();
     }
   }
-  
+  // in controller
   public function forceDestroy($id){
     try {
       $d = Department::withTrashed()->find($id)->forceDelete();
@@ -153,7 +153,6 @@ class DepartmentController extends Controller
   }
   
   public function restore($id){
-    
     try {
       $d = Department::withTrashed()->find($id)->restore();
       session()->flash('success', 'Department restored');
@@ -163,6 +162,5 @@ class DepartmentController extends Controller
       session()->flash('failure', $e->getMessage());
       return redirect()->back()->withInput();
     }
-  }
-  
+  }  
 }
