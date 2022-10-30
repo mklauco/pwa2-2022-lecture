@@ -46,6 +46,7 @@ class LoginRetentionController extends Controller
     public function show($id)
     {
         //
+        return view('retentions.show');
     }
 
     /**

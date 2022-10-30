@@ -14,6 +14,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Number of departments</th>
+          <th>Login information</th>
         </thead>
         @foreach ($users as $u)
         <tr>
@@ -25,6 +26,7 @@
             {{$d->abbreviation}}@if (!$loop->last),@endif
             @endforeach
           </td>
+          <td><a href="{{route('retentions.show', $u->id)}}">Login information</a></td>
         </tr>
         @endforeach
       </table>
