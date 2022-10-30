@@ -19,20 +19,22 @@ Route::get('/', function () {
     return view('auth.login'); 
 });
 
+Route::get('language/{locale}', [App\Http\Controllers\HomeController::class, 'language'])->name('language');
+
 
 Route::middleware(['auth'])->group(function () {
-// web.php
+    // web.php
     Route::resource('departments', App\Http\Controllers\DepartmentController::class);
     Route::delete('departments/force/{id}', [App\Http\Controllers\DepartmentController::class, 'forceDestroy'])->name('departments.forceDestroy');
-Route::post('departments/restore/{id}', [App\Http\Controllers\DepartmentController::class, 'restore'])->name('departments.restore');
-
+    Route::post('departments/restore/{id}', [App\Http\Controllers\DepartmentController::class, 'restore'])->name('departments.restore');
+    
     Route::resource('retentions', App\Http\Controllers\LoginRetentionController::class);
-
-
+    
+    
     Route::resource('users', App\Http\Controllers\UserController::class);
-
+    
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+    
 });
 
 Auth::routes(); // do not delete, otherwise you will disable the login/logout routes

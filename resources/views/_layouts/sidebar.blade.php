@@ -15,7 +15,7 @@
   <li class="nav-item {{ request()->is('departments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{route('departments.index')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Departments</span>
+      <span>{{__('sidebar.departments')}}</span>
     </a>
   </li>
 

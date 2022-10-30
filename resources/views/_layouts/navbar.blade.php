@@ -10,7 +10,14 @@
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
     
-    
+<div class="btn-group" role="group" >
+  <a class="dropdown-item" href="{{route('language', 'en')}}">
+    <img src="{{asset('img/us.png')}}" alt="EN" width="30px" height="20x">
+  </a>
+  <a class="dropdown-item" href="{{route('language', 'sk')}}">
+    <img src="{{asset('img/sk.png')}}" alt="SK" width="30px" height="20x">
+  </a>
+</div> 
     
     {{-- <li>{{Auth::user()->name}}</li> --}}
     {{Auth::user()->first_name}}&nbsp;{{Auth::user()->last_name}}

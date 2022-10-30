@@ -2,7 +2,7 @@
 /public/build
 /public/hot
 /public/storage
-storage/debugar/
+/storage/debugar/*json
 /storage/*.key
 /vendor
 .env
