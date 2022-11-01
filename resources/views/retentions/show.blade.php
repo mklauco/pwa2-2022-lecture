@@ -8,7 +8,6 @@
     <div class="col-8">
       
       <p class="lead">{{$user->full_name}}</p>
-      
       <table class="table table-striped table-bordered">
         <thead>
           <th>Login time</th>
@@ -23,10 +22,11 @@
         </tr>
         @endforeach
       </table>
+      {{ $retentions->links() }}
     </div>
     
     <div class="col-4">
-      @include('_t.card-block', ['counter' => $retentions->count(), 'title' => 'Number of logins'])
+      @include('_t.card-block', ['counter' => $retentions->total(), 'title' => 'Number of logins'])
     </div>
     
   </div>
