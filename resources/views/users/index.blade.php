@@ -34,7 +34,6 @@
     
     <div class="col-4">
       @include('_t.card-block', ['counter' => $users->count(), 'title' => 'Number of users'])
-      
     </div>
     
   </div>

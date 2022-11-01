@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\LoginRetention;
+use App\Models\User;
+
 class LoginRetentionController extends Controller
 {
     /**
@@ -46,7 +49,9 @@ class LoginRetentionController extends Controller
     public function show($id)
     {
         //
-        return view('retentions.show');
+        $retentions = LoginRetention::where('user_id', $id)->orderBy('created_at', 'desc')->get();
+        $user = User::find($id);
+        return view('retentions.show')->with('retentions', $retentions)->with('user', $user);
     }
 
     /**
