@@ -17,7 +17,10 @@ class LoginRetentionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => fake()->numberBetween(1, 11),
+            'login_ip' => fake()->ipv4(),
+            'login_time' => fake()->dateTimeInInterval('-1 year', '+0 days'),
+            'user_agent' => fake()->userAgent(),
         ];
     }
 }
