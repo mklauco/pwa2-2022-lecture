@@ -22,7 +22,7 @@
   <li class="nav-item {{ request()->is('users*') ? 'active' : '' }}">
     <a class="nav-link" href="{{route('users.index')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Users</span>
+      <span>{{__('sidebar.users')}}</span>
     </a>
   </li>
   

@@ -21,8 +21,8 @@
           <td>{{$r->user_agent}}</td>
         </tr>
         @endforeach
-      </table>
-      {{ $retentions->links() }}
+</table>
+{{ $retentions->links() }}
     </div>
     
     <div class="col-4">

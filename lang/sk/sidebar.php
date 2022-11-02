@@ -2,4 +2,5 @@
 
 return [
     'departments' => 'Oddelenia',
+    'users' => 'Užívatelia',
 ];
