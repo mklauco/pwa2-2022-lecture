@@ -11,4 +11,8 @@ class LoginRetention extends Model
     
     // App\Models\LoginRetention
     protected $fillable = ['user_id', 'login_ip', 'login_time', 'user_agent'];
+
+    public function user(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
