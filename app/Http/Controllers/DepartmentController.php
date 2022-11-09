@@ -32,8 +32,8 @@ class DepartmentController extends Controller
   */
   public function create()
   {
-    //
-    return view('departments.create');
+    $create = true;
+    return view('departments.upsert')->with('create', $create);
   }
   
   /**
@@ -57,6 +57,7 @@ class DepartmentController extends Controller
         'name'                => $request['name'],
         'abbreviation'        => $request['abbreviation'],
         'number_employees'    => $request['number_employees'],
+        'director_id' => 1,
       ]);
       session()->flash('success', 'Department created');
       return redirect()->route('departments.index');
@@ -86,7 +87,8 @@ class DepartmentController extends Controller
   public function edit($id)
   {
     //
-    return view('departments.edit')->with('department', Department::find($id));
+    $create = false;
+    return view('departments.upsert')->with('department', Department::find($id))->with('create', $create);
   }
   
   /**
@@ -109,6 +111,7 @@ class DepartmentController extends Controller
     $d->name                = $request->name;
     $d->abbreviation        = $request->abbreviation;
     $d->number_employees    = $request->number_employees;
+    $d->director_id         = 1;
     $d->save();
     
     try {

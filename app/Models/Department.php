@@ -14,7 +14,7 @@ class Department extends Model
 // in Model class
 use SoftDeletes;
     
-    protected $fillable = [ 'name', 'abbreviation', 'number_employees'];
+    protected $fillable = [ 'name', 'abbreviation', 'number_employees', 'director_id'];
     // App\Models\Department
     public function director() {
         return $this->hasOne(User::class, 'id', 'director_id');
