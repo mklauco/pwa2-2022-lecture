@@ -48,7 +48,8 @@ class LoginRetentionController extends Controller
   */
   public function show($id)
   {
-    $retentions = LoginRetention::where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+    $retentions = LoginRetention::with('user')->where('user_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+    dd($retentions->first()->user->full_name);
     $user = User::find($id);
     return view('retentions.show')->with('retentions', $retentions)->with('user', $user);
   }

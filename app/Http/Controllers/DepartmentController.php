@@ -34,7 +34,11 @@ class DepartmentController extends Controller
   public function create()
   {
     $create = true;
+<<<<<<< HEAD
     return view('departments.upsert')->with('create', $create)->with('userList', $this->getUserList());
+=======
+    return view('departments.upsert')->with('create', $create);
+>>>>>>> origin/L07
   }
   
   /**
@@ -58,6 +62,7 @@ class DepartmentController extends Controller
         'name'                => $request['name'],
         'abbreviation'        => $request['abbreviation'],
         'number_employees'    => $request['number_employees'],
+        'director_id' => 1,
       ]);
       session()->flash('success', 'Department created');
       return redirect()->route('departments.index');
@@ -87,10 +92,16 @@ class DepartmentController extends Controller
   // in controller  
   public function edit($id)
   {
+<<<<<<< HEAD
     $create = false;
     return view('departments.upsert')
     ->with('department', Department::find($id))
     ->with('create', $create)->with('userList', $this->getUserList());
+=======
+    //
+    $create = false;
+    return view('departments.upsert')->with('department', Department::find($id))->with('create', $create);
+>>>>>>> origin/L07
   }
   
   /**
@@ -113,6 +124,7 @@ class DepartmentController extends Controller
     $d->name                = $request->name;
     $d->abbreviation        = $request->abbreviation;
     $d->number_employees    = $request->number_employees;
+    $d->director_id         = 1;
     $d->save();
     
     try {
