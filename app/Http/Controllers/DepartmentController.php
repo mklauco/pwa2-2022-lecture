@@ -30,10 +30,11 @@ class DepartmentController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+  // in controller
   public function create()
   {
     $create = true;
-    return view('departments.upsert')->with('create', $create);
+    return view('departments.upsert')->with('create', $create)->with('userList', $this->getUserList());
   }
   
   /**
@@ -57,7 +58,7 @@ class DepartmentController extends Controller
         'name'                => $request['name'],
         'abbreviation'        => $request['abbreviation'],
         'number_employees'    => $request['number_employees'],
-        'director_id' => 1,
+        'director_id' => $request['director_id'],
       ]);
       session()->flash('success', 'Department created');
       return redirect()->route('departments.index');
@@ -84,11 +85,13 @@ class DepartmentController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
+  // in controller  
   public function edit($id)
   {
-    //
     $create = false;
-    return view('departments.upsert')->with('department', Department::find($id))->with('create', $create);
+    return view('departments.upsert')
+    ->with('department', Department::find($id))
+    ->with('create', $create)->with('userList', $this->getUserList());
   }
   
   /**
@@ -111,7 +114,7 @@ class DepartmentController extends Controller
     $d->name                = $request->name;
     $d->abbreviation        = $request->abbreviation;
     $d->number_employees    = $request->number_employees;
-    $d->director_id         = 1;
+    $d->director_id         = $request->director_id;
     $d->save();
     
     try {
