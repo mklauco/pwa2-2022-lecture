@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         UserAdminSeeder::class,            
         DepartmentSeeder::class,
         LoginRetentionSeeder::class,
+        UniversitySeeder::class,
+        FacultySeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

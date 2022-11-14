@@ -17,7 +17,8 @@ class FacultyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'           => fake()->company(),
+            'university_id'  => fake()->numberBetween(1, 10),
         ];
     }
 }
