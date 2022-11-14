@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('faculties', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->timestamps();
+        Schema::table('faculties', function (Blueprint $table) {
+            $table->foreignId('university_id')->nullable()->default(null)->references('id')->on('universities');
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faculties');
+        Schema::table('faculties', function (Blueprint $table) {
+            $table->dropForeign(['university_id']); // what for array []
+        });
     }
 };
