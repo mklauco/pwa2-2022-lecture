@@ -30,10 +30,11 @@ class DepartmentController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+  // in controller
   public function create()
   {
-    //
-    return view('departments.create');
+    $create = true;
+    return view('departments.upsert')->with('create', $create)->with('userList', $this->getUserList());
   }
   
   /**
@@ -83,10 +84,13 @@ class DepartmentController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
+  // in controller  
   public function edit($id)
   {
-    //
-    return view('departments.edit')->with('department', Department::find($id));
+    $create = false;
+    return view('departments.upsert')
+    ->with('department', Department::find($id))
+    ->with('create', $create)->with('userList', $this->getUserList());
   }
   
   /**
