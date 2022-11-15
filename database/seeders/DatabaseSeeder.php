@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         UniversitySeeder::class,
         FacultySeeder::class,
         DepartmentSeeder::class,
+        PositionSeeder::class,
+        PositionUserSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

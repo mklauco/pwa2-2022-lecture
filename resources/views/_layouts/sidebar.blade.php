@@ -25,6 +25,13 @@
       <span>{{__('sidebar.users')}}</span>
     </a>
   </li>
+
+  <li class="nav-item {{ request()->is('users*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{route('users_join')}}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>{{__('sidebar.users_join')}}</span>
+    </a>
+  </li>
   
 
   <!-- Divider -->

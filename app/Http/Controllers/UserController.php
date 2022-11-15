@@ -15,8 +15,16 @@ class UserController extends Controller
   */
   public function index()
   {
-    $users = User::with('departments')->get();
+    $users = User::with('departments', 'positions')->limit(2)->get();
+    // dd($users);
     return view('users.index')->with('users', $users);
+  }
+
+  public function index2()
+  {
+    $users = User::join('departments', 'users.id', '=', 'departments.director_id')->limit(4)->get();
+    dd($users);
+    return view('users.index2')->with('users', $users);
   }
   
   /**

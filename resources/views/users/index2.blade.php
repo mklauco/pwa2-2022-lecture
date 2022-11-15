@@ -27,12 +27,12 @@
             {{$d->abbreviation}}@if (!$loop->last),@endif
             @endforeach
           </td>
-          <td>
+          {{-- <td>
             <strong>{{$u->positions->count()}}</strong>:
             @foreach ( $u->positions as $p)
             {{$p->name}}@if (!$loop->last),@endif
             @endforeach            
-          </td>
+          </td> --}}
           <td><a href="{{route('retentions.show', $u->id)}}">Login information</a></td>
         </tr>
         @endforeach

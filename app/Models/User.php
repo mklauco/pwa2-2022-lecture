@@ -47,13 +47,16 @@ class User extends Authenticatable
         return $this->first_name.' '.$this->last_name;
     }
     
-    // public function setLastNameAttribute($value){
-        // return $this->attributes['last_name'] = strtolower($value);
-    // }
-
-// App\Models\User
-public function departments() {
-    return $this->hasMany(Department::class, 'director_id', 'id');
-}
+    
+    // App\Models\User
+    public function departments() {
+        return $this->hasMany(Department::class, 'director_id', 'id');
+    }
+    
+    // App\Models\User.php
+    public function positions(){
+        return $this->belongsToMany(Position::class);
+    }
+    
     
 }
