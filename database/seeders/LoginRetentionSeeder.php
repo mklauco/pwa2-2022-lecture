@@ -19,6 +19,14 @@ class LoginRetentionSeeder extends Seeder
   // LoginRetentionSeeder - run()
   public function run()
   {
-    LoginRetention::factory()->count(2000)->create();
+    $logins = LoginRetention::factory()->count(2000)->make();
+    /**
+    * hack for speeding up the seeding process
+    * 
+    */
+    $chunks = $logins->chunk(500);
+    $chunks->each(function ($chunk) {
+      LoginRetention::insert($chunk->toArray());
+    });
   }
 }

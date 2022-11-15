@@ -26,6 +26,14 @@ class UserAdminSeeder extends Seeder
             'password'          => Hash::make('password'),           
         ]);
         
-        User::factory()->count(10)->create();
+        $users = User::factory()->count(10000)->make();
+        /**
+         * hack for speeding up the seeding process
+         * 
+         */
+        $chunks = $users->chunk(1000);
+        $chunks->each(function ($chunk) {
+            User::insert($chunk->makeHidden('email_verified_at')->makeVisible('password')->toArray());
+        });
     }
 }

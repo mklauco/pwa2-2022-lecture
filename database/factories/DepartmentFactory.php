@@ -21,7 +21,8 @@ class DepartmentFactory extends Factory
             'name'                => fake()->company(),
             'abbreviation'        => fake()->stateAbbr(),
             'number_employees'    => fake()->numberBetween(1, 50),
-            'director_id'        => fake()->numberBetween(1, 11),
+            'director_id'         => fake()->numberBetween(1, 1000),
+            'faculty_id'          => fake()->numberBetween(1, 100),
         ];
         
     }

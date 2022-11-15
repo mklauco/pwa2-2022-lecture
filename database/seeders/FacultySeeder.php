@@ -16,6 +16,6 @@ class FacultySeeder extends Seeder
     public function run()
     {
         //
-        Faculty::factory()->count(50)->create();
+        Faculty::factory()->count(100)->create();
     }
 }
