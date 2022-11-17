@@ -21,9 +21,17 @@
             {{ Form::submit('Export simple data') }}
             {{ Form::close() }}
           </div>
+
+          <div class="row">
+            
+            {{ Form::open(['route' => 'exportPDF']) }}
+            {{ Form::submit('Export PDF document') }}
+            {{ Form::close() }}
+          </div>
         </div>
       </div>
     </div>
   </div>
+  
 </div>
 @endsection

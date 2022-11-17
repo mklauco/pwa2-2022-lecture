@@ -9,6 +9,11 @@ use App\Mail\TestEmail;
 
 use Spatie\SimpleExcel\SimpleExcelWriter;
 use Illuminate\Support\Facades\Storage;
+
+use App\Models\User;
+
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class TestController extends Controller
 {
   
@@ -21,14 +26,21 @@ class TestController extends Controller
   
   public function exportXls(){
     $pathToCsv = base_path().'/public/test-export.csv';
-    $w = SimpleExcelWriter::create($pathToCsv, 'csv')->addRow([
-      'first_name' => 'John',
-      'last_name' => 'Doe',
-      ])->addRow([
-        'first_name' => 'Jane',
-        'last_name' => 'Doe',
-      ]);
-      return redirect()->back();
-    }
+    $w = SimpleExcelWriter::create($pathToCsv, 'csv')->addRow([      'first_name' => 'John','last_name' => 'Doe',      ])->addRow(['first_name' => 'Jane','last_name' => 'Doe',]);
+    return redirect()->back();
   }
   
+  // in controller
+  public function exportPDF(){
+    $users = User::where('id', '<=', 20)->get();
+    $array = [];
+    $data = compact('users', 'array');
+    $pdf = Pdf::loadView('pdf.users', $data);
+    
+    
+    return $pdf->download('users.pdf');
+  }
+  
+}
+
+
