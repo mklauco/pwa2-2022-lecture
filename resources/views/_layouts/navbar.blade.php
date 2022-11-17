@@ -12,10 +12,10 @@
     
 <div class="btn-group" role="group" >
   <a class="dropdown-item" href="{{route('language', 'en')}}">
-    <img src="{{asset('img/us.png')}}" alt="EN" width="30px" height="20x">
+    EN
   </a>
   <a class="dropdown-item" href="{{route('language', 'sk')}}">
-    <img src="{{asset('img/sk.png')}}" alt="SK" width="30px" height="20x">
+    SK
   </a>
 </div> 
     
