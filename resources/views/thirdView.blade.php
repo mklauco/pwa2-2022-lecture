@@ -1,1 +1,0 @@
-<h1> Returned from the controller with variable: {{$variable}}</h1>

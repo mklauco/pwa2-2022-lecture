@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::get('users_join', [App\Http\Controllers\UserController::class, 'index2'])->name('users_join');
     
+    Route::post('sendemail', [App\Http\Controllers\TestController::class, 'sendTestEmail'])->name('sendemail');
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
 });
