@@ -8,9 +8,9 @@
         <div class="card-header">{{ __('Dashboard') }}</div>
         
         <div class="card-body">
-          {!! Form::open(['route' => 'sendemail']) !!}
-          {{Form::submit('Send Test Email')}}
-          {!! Form::close() !!}
+          {{ Form::open(['route' => 'sendemail']) }}
+          {{ Form::submit('Send Test Email') }}
+          {{ Form::close() }}
         </div>
       </div>
     </div>

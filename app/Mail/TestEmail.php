@@ -18,16 +18,20 @@ class TestEmail extends Mailable
   *
   * @return void
   */
-  public function __construct()
-  {
-    //
-  }
+// app/mail/TestEmail.php
+public $data;
+
+public function __construct($data)
+{
+  $this->data = $data;
+}
   
   /**
   * Get the message envelope.
   *
   * @return \Illuminate\Mail\Mailables\Envelope
   */
+  // app/mail/TestEmail.php
   public function envelope()
   {
     return new Envelope(

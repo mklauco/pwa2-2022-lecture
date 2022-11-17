@@ -12,7 +12,8 @@ class TestController extends Controller
   // in controller
   public function sendTestEmail(){
     // Mail::to('martin.klauco@stuba.sk')->send(new TestEmail());
-    Mail::to('martin.klauco@stuba.sk')->queue(new TestEmail());
+    $data['value'] = now();
+    Mail::to('martin.klauco@stuba.sk')->queue(new TestEmail($data));
     return redirect()->back();
   }
 }
