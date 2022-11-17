@@ -35,9 +35,26 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users_join', [App\Http\Controllers\UserController::class, 'index2'])->name('users_join');
     
     Route::post('sendemail', [App\Http\Controllers\TestController::class, 'sendTestEmail'])->name('sendemail');
-
+    
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
 });
+
+
+Route::get('/forgot-password', function () {
+    return view('auth.passwords.email');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', function (Request $request) {
+    $request->validate(['email' => 'required|email']);
+    
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+    
+    return $status === Password::RESET_LINK_SENT
+    ? back()->with(['status' => __($status)])
+    : back()->withErrors(['email' => __($status)]);
+})->middleware('guest')->name('password.email');
 
 Auth::routes(); // do not delete, otherwise you will disable the login/logout routes
