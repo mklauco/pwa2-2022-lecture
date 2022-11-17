@@ -8,9 +8,19 @@
         <div class="card-header">{{ __('Dashboard') }}</div>
         
         <div class="card-body">
-          {{ Form::open(['route' => 'sendemail']) }}
-          {{ Form::submit('Send Test Email') }}
-          {{ Form::close() }}
+          <div class="row">
+            
+            {{ Form::open(['route' => 'sendemail']) }}
+            {{ Form::submit('Send Test Email') }}
+            {{ Form::close() }}
+            
+          </div>
+          <div class="row">
+            
+            {{ Form::open(['route' => 'exportxls']) }}
+            {{ Form::submit('Export simple data') }}
+            {{ Form::close() }}
+          </div>
         </div>
       </div>
     </div>

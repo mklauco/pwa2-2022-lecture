@@ -12,7 +12,8 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "laravelcollective/html": "^6.3"
+        "laravelcollective/html": "^6.3",
+        "spatie/simple-excel": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

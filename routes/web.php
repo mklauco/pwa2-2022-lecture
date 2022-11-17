@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users_join', [App\Http\Controllers\UserController::class, 'index2'])->name('users_join');
     
     Route::post('sendemail', [App\Http\Controllers\TestController::class, 'sendTestEmail'])->name('sendemail');
+
+    Route::post('exportxls', [App\Http\Controllers\TestController::class, 'exportXls'])->name('exportxls');
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     

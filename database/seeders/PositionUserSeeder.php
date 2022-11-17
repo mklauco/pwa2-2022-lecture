@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
+use Spatie\SimpleExcel\SimpleExcelReader;
 class PositionUserSeeder extends Seeder
 {
     /**
@@ -23,11 +23,25 @@ class PositionUserSeeder extends Seeder
                 'user_id' => rand(1, 10000),
             ];
         }
-        // $chunks = array_chunk($d, 1000);
-        // foreach($chunks as $c){
-            //     DB::table('position_user')->insert($c);
-            // }
-            DB::table('position_user')->insert($d);
+        $chunks = array_chunk($d, 1000);
+        foreach($chunks as $c){
+            DB::table('position_user')->insert($c);
         }
+        // DB::table('position_user')->insert($d);
+        
+        
+        // $path = base_path().'/public/test-export.csv';
+        // $rows = SimpleExcelReader::create($path)->getRows();
+        // $p = [];
+        
+        // foreach($rows as $r) {
+        //     $p[] = [
+        //         'first_name'   => $r['first_name'],
+        //         'last_name'       => $r['last_name'],
+        //     ];
+            
+        // }
+        // DB::table('table')->insert($p);  
+        // dd($p);
     }
-    
+}
