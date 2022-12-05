@@ -23,9 +23,18 @@ class UserAdminSeeder extends Seeder
             'first_name'        => 'Martin',
             'last_name'         => 'Klaučo',
             'email'             => 'martin.klauco@stuba.sk',
+            'is_admin'          => true,
             'password'          => Hash::make('password'),           
         ]);
         
+        User::create([
+            'first_name'        => 'Martin',
+            'last_name'         => 'Klaučo',
+            'email'             => 'martin.klauco@gmail.com',
+            'is_admin'          => false,
+            'password'          => Hash::make('password'),           
+        ]);
+
         $users = User::factory()->count(10000)->make();
         /**
          * hack for speeding up the seeding process
@@ -37,3 +46,4 @@ class UserAdminSeeder extends Seeder
         });
     }
 }
+// home.blade.php

@@ -8,25 +8,32 @@
         <div class="card-header">{{ __('Dashboard') }}</div>
         
         <div class="card-body">
+          
           <div class="row">
-            
             {{ Form::open(['route' => 'sendemail']) }}
             {{ Form::submit('Send Test Email') }}
             {{ Form::close() }}
-            
           </div>
-          <div class="row">
-            
+          
+          <div class="row">  
             {{ Form::open(['route' => 'exportxls']) }}
             {{ Form::submit('Export simple data') }}
             {{ Form::close() }}
           </div>
-
-          <div class="row">
-            
+          
+          @if(Auth::user()->is_admin == true)
+          <div class="row">           
             {{ Form::open(['route' => 'exportPDF']) }}
             {{ Form::submit('Export PDF document') }}
             {{ Form::close() }}
+          </div>
+          @else
+          {{-- The else is optional --}}
+          This option is available only to admins
+          @endif
+
+          <div class="row">  
+            <a href="{{route('dateExamples')}}"> Examples of Carbon </a>
           </div>
         </div>
       </div>

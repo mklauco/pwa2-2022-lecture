@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('exportxls', [App\Http\Controllers\TestController::class, 'exportXls'])->name('exportxls');
 
     Route::post('exportPDF', [App\Http\Controllers\TestController::class, 'exportPDF'])->name('exportPDF');
+
+    Route::get('dateExamples', [App\Http\Controllers\TestController::class, 'dateExamples'])->name('dateExamples');
     
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
