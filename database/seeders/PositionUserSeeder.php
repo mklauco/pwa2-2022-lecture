@@ -17,10 +17,10 @@ class PositionUserSeeder extends Seeder
     {
         //
         $d = [];
-        for($i = 0; $i <= 20000; $i++){
+        for($i = 0; $i <= 2000; $i++){
             $d[] = [
                 'position_id' => rand(1, 4),
-                'user_id' => rand(1, 10000),
+                'user_id' => rand(1, 1000),
             ];
         }
         $chunks = array_chunk($d, 1000);

@@ -33,14 +33,21 @@ class TestController extends Controller
     return redirect()->back();
   }
   
-
-public function dateExamples(){
-  $dateTime = Carbon::now(); // current UTC time
-  $dateTime2 = Carbon::parse('2022-11-08 15:23:01', 'Europe/Berlin'); // generated time
-  $dateTime3 = Carbon::parse($dateTime2)->add('+5 days')->endOfDay(); // time modifiers
-  dd($dateTime, $dateTime2, $dateTime3);
-}
-
+  
+  public function dateExamples(){
+    $dateTime = Carbon::now(); // current UTC time
+    $dateTime2 = Carbon::parse('2022-11-08 15:23:01', 'Europe/Berlin'); // generated time
+    $dateTime3 = Carbon::parse($dateTime2)->add('+5 days')->endOfDay(); // time modifiers
+    
+    
+// users added in august this year
+$start = Carbon::parse('2022-08-01')->startOfMonth();
+$stop = Carbon::parse('2022-08-01')->endOfMonth();
+// $users = User::where('created_at', '>=', $start)->where('created_at', '<=', $stop)->get();
+$users = User::whereYear('created_at', 2022)->get();
+    dd($dateTime, $dateTime2, $dateTime3, $users);
+  }
+  
   // in controller
   public function exportPDF(){
     if(Auth::user()->is_admin == true){

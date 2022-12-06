@@ -19,7 +19,7 @@ class PositionUserFactory extends Factory
         // PositionUserFactory.php
         return [
             'position_id' => fake()->numberBetween(1, 4),
-            'user_id'     => fake()->numberBetween(1, 10000),
+            'user_id'     => fake()->numberBetween(1, 1000),
         ];
     }
 }

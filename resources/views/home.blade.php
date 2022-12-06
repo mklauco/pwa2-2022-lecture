@@ -32,6 +32,8 @@
           This option is available only to admins
           @endif
 
+          {{Carbon\Carbon::parse('2022-07-11 12:00:01')->tz('Europe/Berlin')->format('d-m-Y')}}
+
           <div class="row">  
             <a href="{{route('dateExamples')}}"> Examples of Carbon </a>
           </div>
