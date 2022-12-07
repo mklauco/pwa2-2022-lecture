@@ -49,9 +49,9 @@ $users = User::whereYear('created_at', 2022)->get();
     dd($dateTime, $dateTime2, $dateTime3->tz('Pacific/Chatham'), $users);
   }
   
+// pridal som komentar
 
 
-  
   // in controller
   public function exportPDF(){
     if(Auth::user()->is_admin == true){
