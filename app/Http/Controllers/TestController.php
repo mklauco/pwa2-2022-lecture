@@ -37,6 +37,7 @@ class TestController extends Controller
   public function dateExamples(){
     $dateTime = Carbon::now(); // current UTC time
     $dateTime2 = Carbon::parse('2022-11-08 15:23:01', 'Europe/Berlin'); // generated time
+    // $dateTime2 = Carbon::parse($request->date); // generated time
     $dateTime3 = Carbon::parse($dateTime2)->add('+5 days')->endOfDay(); // time modifiers
     
     
@@ -45,8 +46,11 @@ $start = Carbon::parse('2022-08-01')->startOfMonth();
 $stop = Carbon::parse('2022-08-01')->endOfMonth();
 // $users = User::where('created_at', '>=', $start)->where('created_at', '<=', $stop)->get();
 $users = User::whereYear('created_at', 2022)->get();
-    dd($dateTime, $dateTime2, $dateTime3, $users);
+    dd($dateTime, $dateTime2, $dateTime3->tz('Pacific/Chatham'), $users);
   }
+  
+
+
   
   // in controller
   public function exportPDF(){
